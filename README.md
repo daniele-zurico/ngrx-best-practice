@@ -30,11 +30,11 @@ Where:
 4. SelectedBookPageComponent
 Are the `containers`
 
-![booksStructure]("https://github.com/daniele-zurico/ngrx-best-practice/doc/BooksStructure.png")
+![Alt text]("./doc/BooksStructure.png?raw=true)
 
 ##CoreModule.ts
-![CoreModule]("https://github.com/daniele-zurico/ngrx-best-practice/doc/CoreModule.png")
+![Alt text](./doc/CoreModule.png?raw=true)
 Where:
 1. AppComponent
 Is the container and the others are `components` used by it:
-![AppComponent]("https://github.com/daniele-zurico/ngrx-best-practice/doc/AppComponent.png")
+![Alt text](./doc/AppComponent.png?raw=true)
