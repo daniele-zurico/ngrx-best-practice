@@ -1,20 +1,46 @@
-## AuthModule.ts
-We added the authentication module to restrict the access in case you not logged in. The folder structure is still the same:
-1. containers
-2. components
-3. **models** - the interface to Authenticate and the User
-4. **services** - it contains the auth-guard (to allow to see or not the books) and the service to login
-![Alt text](./doc/AuthModule.png?raw=true)
+# NgrxLearning
+This repo is a step by step guide from [ngrx-platform](https://github.com/ngrx/platform/tree/master/example-app)
+It's organized by branch and each branch add a new layer:
+1. **master** branch contains the project folders, the routes and some pipes;
+2. **auth** branch setup the authentication and the guards;
+3. **ngrx** we setup ngrx
 
-The relation between containers and component is the following:
-![Alt text](./doc/Login.png?raw=true)
+## Available routes
+1. books
+2. books/find
+3. books/<book_id>
 
-The `routes.ts` has been updated:
+## How the code is organized:
+There're 4 main folders under app:
+1. **core** - is the starting point where app.component.ts is located
+2. **books** - is the main root
+3. **shared** - contains pipes
+4. **material** - include all the material modules used in the entire application
 
-```js
-{
-  path: 'books',
-  loadChildren: './books/books.module#BooksModule',
-  canActivate: [AuthGuard],
-}
-```
+**core** and **books** are organized in at least 2 sub-folder and 1 module:
+1. **containers** - they're the views
+2. **components** - components used by each view
+
+**core** contains as well:
+1. **services** - `retrieveBook` and `searchBooks` from googleApi
+
+**books** contain as well:
+1. models - it defines the interface for the book that reflect the googleApi result
+
+CoreModule is imported in the `app.module.ts`, `books.modules.ts` instead is lazy loaded by `routes.ts`. Routes.ts finally is imported in the `app.module.ts` with the `RouterModule.forRoot`
+
+### BooksModule.ts
+![Alt text](./doc/BooksModule.png?raw=true)
+Where:
+1. CollectionPageComponent
+2. FindBookPageComponent
+3. ViewBookPageComponent
+4. SelectedBookPageComponent
+
+Are the `containers`
+![Alt text](./doc/BooksStructure.png?raw=true)
+
+## CoreModule.ts
+![Alt text](./doc/CoreModule.png?raw=true)
+Where **AppComponent** is the container and the others are `components` used by it:
+![Alt text](./doc/AppComponent.png?raw=true)
