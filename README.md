@@ -32,7 +32,7 @@ Where:
 Are the `containers`
 ![Alt text](./doc/BooksStructure.png?raw=true)
 
-##CoreModule.ts
+## CoreModule.ts
 ![Alt text](./doc/CoreModule.png?raw=true)
 Where:
 1. AppComponent
