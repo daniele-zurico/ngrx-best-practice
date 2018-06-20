@@ -1,7 +1,9 @@
 # NgrxLearning
 This repo is a step by step guide from [ngrx-platform](https://github.com/ngrx/platform/tree/master/example-app)
+It's organized by branch and each branch add a new layer:
+1. **master** branch contains the project folders, the routes and some pipes;
+2. **auth** branch setup the authentication and the guards;
 
-In the master branch we setup the project folders, the routes and some pipes.
 
 ## Available routes
 1. books
