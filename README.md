@@ -10,14 +10,14 @@ In the master branch we setup the project folders, the routes and some pipes.
 
 ## How the code is organized:
 There're 4 main folders under app:
-1. core - is the starting point where app.component.ts is located
-2. books - is the main root
-3. shared - contains pipes
-4. material - include all the material modules used in the entire application
+1. **core** - is the starting point where app.component.ts is located
+2. **books** - is the main root
+3. **shared** - contains pipes
+4. **material** - include all the material modules used in the entire application
 
 core and books are organized in 2 sub-folder and 1 module:
-1. containers - they're the views
-2. components - components used by each view
+1. **containers** - they're the views
+2. **components** - components used by each view
 
 CoreModule is imported in the `app.module.ts`, `books.modules.ts` instead is lazy loaded by `routes.ts`. Routes.ts finally is imported in the `app.module.ts` with the `RouterModule.forRoot`
 
