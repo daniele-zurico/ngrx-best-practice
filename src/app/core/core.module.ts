@@ -26,7 +26,7 @@ export class CoreModule {
   static forRoot() {
     return {
       ngModule: CoreModule,
-      providers: [],
+      providers: [GoogleBooksService],
     };
   }
 }

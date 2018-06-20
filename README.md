@@ -15,9 +15,15 @@ There're 4 main folders under app:
 3. **shared** - contains pipes
 4. **material** - include all the material modules used in the entire application
 
-core and books are organized in 2 sub-folder and 1 module:
+**core** and **books** are organized in at least 2 sub-folder and 1 module:
 1. **containers** - they're the views
 2. **components** - components used by each view
+
+**core** contains as well:
+1. **services** - `retrieveBook` and `searchBooks` from googleApi
+
+**books** contain as well:
+1. models - it defines the interface for the book that reflect the googleApi result
 
 CoreModule is imported in the `app.module.ts`, `books.modules.ts` instead is lazy loaded by `routes.ts`. Routes.ts finally is imported in the `app.module.ts` with the `RouterModule.forRoot`
 
