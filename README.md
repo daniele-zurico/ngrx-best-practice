@@ -22,7 +22,7 @@ core and books are organized in 2 sub-folder and 1 module:
 CoreModule is imported in the `app.module.ts`, `books.modules.ts` instead is lazy loaded by `routes.ts`. Routes.ts finally is imported in the `app.module.ts` with the `RouterModule.forRoot`
 
 ### BooksModule.ts
-![BooksModule]("https://raw.githubusercontent.com/daniele-zurico/ngrx-best-practice/master/doc/BooksModule.png")
+![Alt text](./doc/BooksModule.png?raw=true)
 Where:
 1. CollectionPageComponent
 2. FindBookPageComponent
