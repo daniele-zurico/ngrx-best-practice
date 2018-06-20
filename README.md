@@ -28,9 +28,9 @@ Where:
 2. FindBookPageComponent
 3. ViewBookPageComponent
 4. SelectedBookPageComponent
-Are the `containers`
 
-![Alt text]("./doc/BooksStructure.png?raw=true)
+Are the `containers`
+![Alt text](./doc/BooksStructure.png?raw=true)
 
 ##CoreModule.ts
 ![Alt text](./doc/CoreModule.png?raw=true)
