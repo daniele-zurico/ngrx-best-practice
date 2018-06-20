@@ -41,6 +41,5 @@ Are the `containers`
 ## CoreModule.ts
 ![Alt text](./doc/CoreModule.png?raw=true)
 Where:
-1. AppComponent
-Is the container and the others are `components` used by it:
+**AppComponent** is the container and the others are `components` used by it:
 ![Alt text](./doc/AppComponent.png?raw=true)
