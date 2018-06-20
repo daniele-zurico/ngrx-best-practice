@@ -3,8 +3,8 @@ This repo is a step by step guide from [ngrx-platform](https://github.com/ngrx/p
 It's organized by branch and each branch add a new layer:
 1. **master** branch contains the project folders, the routes and some pipes;
 2. **auth** branch setup the authentication and the guards;
-3. **ngrx-core** we setup ngrx for the core
-4. **ngrx-core
+3. **ngrxe** we setup ngrx (dependencies and base modules)
+4. **ngrx-core** we setup ngrx for the core module
 
 ## Available routes
 1. books
