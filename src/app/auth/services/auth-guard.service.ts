@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 @Injectable()
 export class AuthGuard implements CanActivate {
   // mock variable to test the guard
-  private authorized = false;
+  private authorized = true;
   constructor(private router: Router) {}
 
   canActivate(): Observable<boolean> {

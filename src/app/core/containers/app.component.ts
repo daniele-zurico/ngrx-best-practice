@@ -1,11 +1,16 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import * as fromRoot from '../../reducers';
+import * as LayoutActions from '../store/layout.actions';
 
 @Component({
   selector: 'bc-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <bc-layout>
-    <bc-sidenav [open]="showSidenav">
+    <bc-sidenav [open]="showSidenav$ | async">
       <bc-nav-item (navigate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
         My Collection
       </bc-nav-item>
@@ -26,16 +31,26 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   </bc-layout>`,
 })
 export class AppComponent {
-  showSidenav = false;
+  showSidenav$: Observable<boolean>;
+  loggedIn$: Observable<boolean>;
+
+  constructor(private store: Store<fromRoot.State>) {
+    this.showSidenav$ = this.store.pipe(
+      select(fromRoot.getShowSidenav)
+    );
+    // TODO when we have the store from auth we can check if logged in
+  }
+
   closeSidenav() {
-    this.showSidenav = false;
+    this.store.dispatch(new LayoutActions.CloseSidenav());
   }
 
   openSidenav() {
-    this.showSidenav = true;
+    this.store.dispatch(new LayoutActions.OpenSidenav());
   }
 
   logout() {
     this.closeSidenav();
+    // TODO when we have the store fro auth we can dispatch the action to logout
   }
 }
