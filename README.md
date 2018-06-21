@@ -88,7 +88,7 @@ export class AppComponent {
     ...
 ```
 
-6. `reducers/index.ts
+6. `reducers/index.ts`:
 
 ```js
 /**
