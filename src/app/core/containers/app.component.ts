@@ -3,8 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as fromRoot from '../../reducers';
-import * as LayoutActions from '../store/layout.actions';
-
+import * as LayoutActions from '../store/actions/layout.actions';
+import * as fromLayout from '../store/reducers';
 @Component({
   selector: 'bc-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,9 +36,8 @@ export class AppComponent {
 
   constructor(private store: Store<fromRoot.State>) {
     this.showSidenav$ = this.store.pipe(
-      select(fromRoot.getShowSidenav)
+      select(fromLayout.getShowSidenav)
     );
-    // TODO when we have the store from auth we can check if logged in
   }
 
   closeSidenav() {

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { LayoutActionsUnion, LayoutActionTypes } from './layout.actions';
+import { LayoutActionsUnion, LayoutActionTypes } from '../actions/layout.actions';
 
 export interface State {
   showSidenav: boolean;
@@ -26,4 +26,3 @@ export function reducer(state = initialState, action: LayoutActionsUnion): State
   }
 }
 export const getShowSidenav = (state: State) => state.showSidenav;
-

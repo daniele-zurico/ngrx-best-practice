@@ -1,7 +1,13 @@
 Run the following commands to generate action/reducer and effects and update the `reducer/index` file with the generated store:
 1. ``` ng g feature core/Layout --reducers=../reducers/index.ts ```
-After that I moved everything under the folder `store`
-2. replace the content of the `layout.reducer.ts`:
+After that I moved everything under the folder `store` and each file in his own folder:
+
+- store/actions/layout.actions.ts
+- store/reducers/layout.reducer.ts
+- I create store/reducers/index.ts
+- we don't use the effects so feel free to remove it
+
+2. replace the content of the `store/actions/layout.actions.ts`:
 
 ```js
 export enum LayoutActionTypes {
@@ -20,7 +26,7 @@ export class CloseSidenav implements Action {
 export type LayoutActionsUnion = OpenSidenav | CloseSidenav;
 ```
 
-3. replace the content of `layout.reducer.ts`:
+3. replace the content of `store/reducers/layout.reducer.ts`:
 
 ```js
 export interface State {
@@ -47,11 +53,30 @@ export function reducer(state = initialState, action: LayoutActions): State {
       return state;
   }
 }
+
+export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
+
+export const getShowSidenav = createSelector(
+  getLayoutState,
+  fromLayout.getShowSidenav
+);
+
 ```
 
-3. we don't use the effects so feel free to remove it
+5. `store/reducers/index.ts`
+```js
+/**
+ * Layout Reducers
+ */
+export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
 
-4. `app.component.ts`:
+export const getShowSidenav = createSelector(
+  getLayoutState,
+  fromLayout.getShowSidenav
+);
+```
+
+6. `app.component.ts`:
 
 ```js
 export class AppComponent {
@@ -81,23 +106,16 @@ export class AppComponent {
   }
 }
 ```
-5. `app.component.ts`:
+
+7. `app.component.html`:
 ```html
   <bc-layout>
     <bc-sidenav [open]="showSidenav$ | async">
     ...
 ```
 
-6. `reducers/index.ts`:
+### Note
+From the official documentation there're some small changes:
+- I put everything under the store folder
+- I created under the reducer folder an index file for the createFeatureSelector. In the official doc the content of that file is under reducer/index.ts (not sure why)
 
-```js
-/**
- * Layout Reducers
- */
-export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
-
-export const getShowSidenav = createSelector(
-  getLayoutState,
-  fromLayout.getShowSidenav
-);
-```

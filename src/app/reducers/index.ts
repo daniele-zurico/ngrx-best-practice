@@ -6,7 +6,7 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import * as fromLayout from '../core/store/layout.reducer';
+import * as fromLayout from '../core/store/reducers/layout.reducer';
 
 export interface State {
 
@@ -21,13 +21,3 @@ export const reducers: ActionReducerMap<State> = {
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
-
-/**
- * Layout Reducers
- */
-export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
-
-export const getShowSidenav = createSelector(
-  getLayoutState,
-  fromLayout.getShowSidenav
-);
