@@ -5,3 +5,5 @@ DBModule.provideDB(schema),
 ```
 3. create `db.ts`
 4. change `collection.effects.ts`
+
+Live demo: https://stackblitz.com/github/daniele-zurico/ngrx-best-practice/tree/ngrx-db
