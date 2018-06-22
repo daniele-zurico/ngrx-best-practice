@@ -5,22 +5,23 @@ import { Observable } from 'rxjs';
 import * as fromRoot from '../../reducers';
 import * as LayoutActions from '../store/actions/layout.actions';
 import * as fromLayout from '../store/reducers';
+import * as fromAuth from '../../auth/store/reducers';
 @Component({
   selector: 'bc-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <bc-layout>
     <bc-sidenav [open]="showSidenav$ | async">
-      <bc-nav-item (navigate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
+      <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
         My Collection
       </bc-nav-item>
-      <bc-nav-item (navigate)="closeSidenav()" routerLink="/books/find" icon="search" hint="Find your next book!">
+      <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
         Browse Books
       </bc-nav-item>
       <bc-nav-item (navigate)="closeSidenav()">
         Sign In
       </bc-nav-item>
-      <bc-nav-item (navigate)="logout()">
+      <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
         Sign Out
       </bc-nav-item>
     </bc-sidenav>
@@ -38,6 +39,7 @@ export class AppComponent {
     this.showSidenav$ = this.store.pipe(
       select(fromLayout.getShowSidenav)
     );
+    this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
   }
 
   closeSidenav() {
