@@ -7,6 +7,11 @@ import { ComponentsModule } from './components';
 import { FindBookPageComponent } from './containers/find-book-page.component';
 import { ViewBookPageComponent } from './containers/view-book-page.component';
 import { SelectedBookPageComponent } from './containers/selected-book-page.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './store/effects/book.effects';
+import { CollectionEffects } from './store/effects/collection.effects';
+import { reducers } from './store/reducers';
 
 @NgModule({
   imports: [
@@ -21,7 +26,9 @@ import { SelectedBookPageComponent } from './containers/selected-book-page.compo
         canActivate: [],
       },
       { path: '', component: CollectionPageComponent },
-    ])
+    ]),
+    StoreModule.forFeature('books', reducers),
+    EffectsModule.forFeature([BookEffects, CollectionEffects]),
   ],
   declarations: [
     CollectionPageComponent,

@@ -1,5 +1,10 @@
-import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-
+import * as BookActions from '../store/actions/book.actions';
+import * as fromBooks from '../store/reducers';
+import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 /**
  * Note: Container components are also reusable. Whether or not
  * a component is a presentation component or a container
@@ -18,11 +23,14 @@ import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
   `,
 })
 export class ViewBookPageComponent implements OnDestroy {
-
-  constructor() {
+  actionsSubscription: Subscription;
+  constructor(store: Store<fromBooks.State>, route: ActivatedRoute) {
+    this.actionsSubscription = route.params
+      .pipe(map(params => new BookActions.Select(params.id)))
+      .subscribe(store);
   }
 
   ngOnDestroy() {
-
+    this.actionsSubscription.unsubscribe();
   }
 }
