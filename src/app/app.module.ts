@@ -12,7 +12,8 @@ import { routes } from './routes';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DBModule } from '@ngrx/db';
+import { schema } from './db';
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forRoot([]),
     CoreModule.forRoot(),
     AuthModule.forRoot(),
+    DBModule.provideDB(schema),
   ],
   providers: [],
   bootstrap: [AppComponent]
