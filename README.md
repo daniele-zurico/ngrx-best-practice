@@ -7,6 +7,7 @@ It's organized by branch and each branch add a new layer:
 4. **ngrx-core** we setup ngrx for the core module
 5. **ngrx-books** we setup ngrx for the books module
 6. **ngrx-auth** we setup ngrx for the auth module
+7. **ngrx-db** `provideDB` sets up @ngrx/db with the provided schema and makes the Database service available
 
 ## Available routes
 1. books
