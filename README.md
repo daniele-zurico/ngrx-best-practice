@@ -6,6 +6,7 @@ It's organized by branch and each branch add a new layer:
 3. **ngrx** we setup ngrx (dependencies and base modules)
 4. **ngrx-core** we setup ngrx for the core module
 5. **ngrx-books** we setup ngrx for the books module
+6. **ngrx-auth** we setup ngrx for the auth module
 
 ## Available routes
 1. books
